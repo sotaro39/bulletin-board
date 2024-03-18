@@ -55,9 +55,10 @@ class TopicController extends Controller
      * @param  \App\Models\Topic  $topic
      * @return \Illuminate\Http\Response
      */
-    public function show(Topic $topic)
+    public function show($id)
     {
-        //
+        $topic = Topic::find($id);
+        return view('topic.show', compact('topic'));
     }
 
     /**

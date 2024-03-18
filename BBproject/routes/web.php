@@ -21,3 +21,4 @@ Route::get('/', function () {
 Route::get('/home', [TopicController::class, 'index'])->middleware('auth')->name('topics.index');
 Route::get('/topics/create', [TopicController::class, 'create'])->middleware('auth')->name('topics.create');
 Route::post('/topics', [TopicController::class, 'store'])->middleware('auth')->name('topics.store');
+Route::get('/topics/{topic}', [TopicController::class, 'show'])->middleware('auth')->name('topics.show');

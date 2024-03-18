@@ -14,7 +14,9 @@
         <p><a href="{{ route('topics.create') }}">記事を書く</a></p>
         @foreach ($topics as $topic)
         <article class="article-item">
-            <div class="article-title">{{ $topic->topic_name }}</div>
+            <div class="article-title">
+                <a href="{{ route('topics.show', $topic->id) }}">{{ $topic->topic_name }}</a>
+            </div>
         </article>
         @endforeach
     </main>

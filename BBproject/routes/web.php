@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TopicController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home', [TopicController::class, 'index'])->middleware('auth')->name('topics.index');
+Route::get('/topics/create', [TopicController::class, 'create'])->middleware('auth')->name('topics.create');
+Route::post('/topics', [TopicController::class, 'store'])->middleware('auth')->name('topics.store');

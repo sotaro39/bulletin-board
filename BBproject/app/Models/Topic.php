@@ -12,7 +12,7 @@ class Topic extends Model
 
     public static function getAllOrderByCreated_at()
 {
-    return self::orderBy('created_at')->get();
+    return self::orderBy('created_at','desc')->get(); //変更
 }
 
 public function comments()

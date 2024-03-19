@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Topic;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Comment;
 
-
-class TopicController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +15,7 @@ class TopicController extends Controller
      */
     public function index()
     {
-        $topics = Topic::getAllOrderByCreated_at();
-        return view('topic.index',compact('topics'));
+        //
     }
 
     /**
@@ -26,9 +23,12 @@ class TopicController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($value)
     {
-        return view('topic.create');
+
+        $comment = new Comment();
+        $data = ['comment' => $comment,'value' => $value];
+        return view('comments.create', $data);
     }
 
     /**
@@ -40,41 +40,37 @@ class TopicController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'topic_name' => 'required|max:255',
+            'comment' => 'required|max:255'
         ]);
 
-        $topic = new Topic();
-        $topic->topic_name = $request->topic_name;
-        $topic->user_id =  Auth::id();
-        $topic->save();
+        $comment = new Comment();
+        $comment->comment_text = $request->comment;
+        $comment->topic_id = $request->topic_id;
+        $comment->user_id = Auth::id();
+        $comment->reply_comment_id = null;
+        $comment->save();
 
-        return redirect(route('topics.index'));
+        return redirect(route('topics.show', $request->topic_id));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Topic  $topic
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        $topic = Topic::find($id);
-        
-        //$user = User::find($id);
 
-        $comments = Comment::where('topic_id', '=', $id)->get();
-        
-        return view('topic.show', compact('topic','comments'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Topic  $topic
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Topic $topic)
+    public function edit(Comment $comment)
     {
         //
     }
@@ -83,10 +79,10 @@ class TopicController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Topic  $topic
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Topic $topic)
+    public function update(Request $request, Comment $comment)
     {
         //
     }
@@ -94,10 +90,10 @@ class TopicController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Topic  $topic
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Topic $topic)
+    public function destroy(Comment $comment)
     {
         //
     }

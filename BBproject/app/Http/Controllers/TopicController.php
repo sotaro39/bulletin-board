@@ -16,7 +16,8 @@ class TopicController extends Controller
     public function index()
     {
         $topics = Topic::getAllOrderByCreated_at();
-        return view('topic.index',compact('topics'));
+        $user =  Auth::user();
+        return view('topic.index',compact('topics', 'user'));
     }
 
     /**
@@ -67,9 +68,20 @@ class TopicController extends Controller
      * @param  \App\Models\Topic  $topic
      * @return \Illuminate\Http\Response
      */
-    public function edit(Topic $topic)
+
+    public function edit(Topic $topic)                
     {
         //
+    }
+
+    //変更
+    public function deleteRequire(Topic $topic)                
+    {
+        //$topicId = $topic->id;
+        //$topicName = $topic->topic_name;
+        $topic = $topic;
+        $user = Auth::user();
+        return view('topic.deleteRequire',compact('topic', 'user'));  
     }
 
     /**
@@ -90,8 +102,9 @@ class TopicController extends Controller
      * @param  \App\Models\Topic  $topic
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Topic $topic)
+    public function destroy($id)
     {
-        //
+        $result = Topic::find($id)->delete();
+        return redirect(route('topics.index'));
     }
 }

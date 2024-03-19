@@ -47,6 +47,9 @@ class CommentController extends Controller
         $comment->comment_text = $request->comment;
         $comment->topic_id = $request->topic_id;
         $comment->user_id = Auth::id();
+        $comments = Comment::where('topic_id', '=', $request->topic_id)->get();
+        $commentsNumber = count($comments);
+        $comment->comment_id = $commentsNumber + 1;
         $comment->save();
 
         return redirect(route('topics.show', $request->topic_id));

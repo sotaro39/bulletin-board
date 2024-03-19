@@ -13,7 +13,8 @@
   <a href="{{ route('topics.index') }}">戻る</a>
         @foreach ($comments as $comment)
         <article class="comment-item">
-            <div class="comment-body">{{ $comment->comment_text }}</div>
+            <div class="comment-body">{{ $comment->comment_id }}   {{ $comment->created_at }} </div>
+            <div class="comment-body">{{ $comment->comment_text }} </div>
         </article>
         @endforeach
         

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Topic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Comment;
+
 
 class TopicController extends Controller
 {
@@ -58,7 +60,12 @@ class TopicController extends Controller
     public function show($id)
     {
         $topic = Topic::find($id);
-        return view('topic.show', compact('topic'));
+        
+        //$user = User::find($id);
+
+        //$comments = $topic->comments;
+        $comments = Comment::where('topic_id', '=', '$id')->get();
+        return view('topic.show', compact('topic','comments'));
     }
 
     /**

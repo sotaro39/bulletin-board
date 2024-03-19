@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TopicController; 
+use App\Http\Controllers\TopicController;
+use App\Models\Comment;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +24,7 @@ Route::get('/home', [TopicController::class, 'index'])->middleware('auth')->name
 Route::get('/topics/create', [TopicController::class, 'create'])->middleware('auth')->name('topics.create');
 Route::post('/topics', [TopicController::class, 'store'])->middleware('auth')->name('topics.store');
 Route::get('/topics/{topic}', [TopicController::class, 'show'])->middleware('auth')->name('topics.show');
+
+//comment
+Route::get('/{topic}/comments/create', [CommentController::class, 'create'])->middleware('auth')->name('comments.create');
+Route::post('/comments', [CommentController::class, 'store'])->middleware('auth')->name('comments.store');

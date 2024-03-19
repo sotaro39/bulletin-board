@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,19 +15,12 @@
         <div class="site-title">掲示板</div>
     </header>
     <main class="container">
-        <form action="{{ route('topics.store') }}" method="post">
+        <form action="{{ route('comments.store') }}" method="post">
             @csrf 
-            <dl class="form-list">
-                <dt>トピック名</dt>
-                <dd><input type="text" name="topic_name"></dd>
-            </dl>
+            <input type="text">
             <button type="submit">投稿する</button>
-            <a href="{{ route('topics.index') }}">キャンセル</a>
+            <a href="{{ route('topics.show', $value) }}">キャンセル</a>
         </form>
     </main>
-    <footer>
-        <div class="site-title">掲示板</div>
-    </footer>
 </body>
 </html>
-

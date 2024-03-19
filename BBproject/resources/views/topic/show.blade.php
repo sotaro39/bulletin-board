@@ -9,7 +9,7 @@
   <h1>{{ $topic->topic_name }}</h1> 
   <hr>
   <main class="container">
-  <p><a href="{{ route('comments.create', $topic->id) }}">記事を書く</a></p>
+  <p><a href="{{ route('comments.create', $topic->id) }}">コメントを書く</a></p>
   <a href="{{ route('topics.index') }}">戻る</a>
         @foreach ($comments as $comment)
         <article class="comment-item">

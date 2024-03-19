@@ -34,3 +34,9 @@ Route::post('/deleteTopicRequirements', [DeleteTopicRequirementController::class
 //comment
 Route::get('/{topic}/comments/create', [CommentController::class, 'create'])->middleware('auth')->name('comments.create');
 Route::post('/comments', [CommentController::class, 'store'])->middleware('auth')->name('comments.store');
+
+//logout
+Route::get('/', function(){
+    Auth::logout();
+    return view('welcome');
+})->name('logout');

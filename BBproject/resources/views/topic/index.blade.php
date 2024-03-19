@@ -11,6 +11,7 @@
         <div class="site-title">掲示板</div>
     </header>
     <main class="container">
+        <p><a href="{{ route('logout') }}">logout</a></p>
         <p><a href="{{ route('topics.create') }}">トピック作成</a></p>
         @foreach ($topics as $topic)
         <article class="article-item">

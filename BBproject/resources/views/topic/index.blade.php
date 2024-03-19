@@ -15,7 +15,7 @@
         @foreach ($topics as $topic)
         <article class="article-item">
             <div class="article-title">
-                <a href="{{ route('topics.deleteRequire', $topic->id) }}">{{ $topic->id}}   {{$topic->topic_name}}</a>
+                <a href="{{ route('topics.show', $topic->id) }}">{{ $topic->id}}   {{$topic->topic_name}}</a>
             </div>
                 @if($user->id === $topic->user_id)
                 <a href="{{ route('topics.deleteRequire', $topic->id) }}">トピック削除</a>

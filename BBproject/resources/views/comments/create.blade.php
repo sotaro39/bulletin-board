@@ -17,7 +17,8 @@
     <main class="container">
         <form action="{{ route('comments.store') }}" method="post">
             @csrf 
-            <input type="text">
+            <input type="text" name="comment">
+            <input value="{{ $value }}" type="hidden" name="topic_id">
             <button type="submit">投稿する</button>
             <a href="{{ route('topics.show', $value) }}">キャンセル</a>
         </form>

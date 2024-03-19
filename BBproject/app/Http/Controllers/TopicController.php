@@ -63,8 +63,8 @@ class TopicController extends Controller
         
         //$user = User::find($id);
 
-        //$comments = $topic->comments;
-        $comments = Comment::where('topic_id', '=', '$id')->get();
+        $comments = Comment::where('topic_id', '=', $id)->get();
+        
         return view('topic.show', compact('topic','comments'));
     }
 

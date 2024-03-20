@@ -17,6 +17,7 @@ class CreateCommentsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('topic_id');
             $table->string('comment_text');
+            $table->integer('to_id')->nullable();
         });
     }
 

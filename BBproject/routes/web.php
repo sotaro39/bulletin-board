@@ -6,6 +6,7 @@ use App\Http\Controllers\TopicController;
 use App\Models\Comment;
 use App\Http\Controllers\DeleteTopicRequirementController; 
 use App\Http\Controllers\DeleteCommentRequirementController;
+use App\Http\Controllers\ReplyController;
 
 
 /*
@@ -47,6 +48,9 @@ Route::post('/comments/{comment}', [CommentController::class, 'destroy'])->middl
 //comment delete require
 Route::get('/deleteCommentRequirements', [DeleteCommentRequirementController::class, 'index'])->middleware('auth')->name('deleteCommentRequirements.index');
 Route::get('/deleteCommentRequirements/{deleteCommentRequirement}', [DeleteCommentRequirementController::class, 'destroy'])->middleware('auth')->name('deleteCommentRequirements.destroy');
+
+//reply
+Route::get('/replies/{comment}', [ReplyController::class, 'index'])->middleware('auth')->name('replies.index');
 
 
 //logout

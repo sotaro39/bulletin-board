@@ -13,8 +13,9 @@
     </header>
     <main class="container">
         <form action="{{ route('comments.store') }}" method="post">
-            @csrf 
-            <input type="text" name="comment">
+            @csrf
+            <p><label>返信先:<input type="integer" name="to_id"></label></p>
+            <p><label>コメント内容:<input type="textarea" name="comment"></label></p>
             <input value="{{ $value }}" type="hidden" name="topic_id">
             <button type="submit">投稿する</button>
             <a href="{{ route('topics.show', $value) }}">キャンセル</a>

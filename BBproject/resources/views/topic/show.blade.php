@@ -13,8 +13,12 @@
   <a href="{{ route('topics.index') }}">戻る</a>
         @foreach ($comments as $comment)
         <article class="comment-item">
-            <div class="comment-body">{{ $comment->comment_id }}   {{ $comment->created_at }} </div>
-            <div class="comment-body">{{ $comment->comment_text }} </div>
+          <div class="comment-body">{{ $comment->comment_id }}   {{ $comment->created_at }} </div>
+          @if ($comment->to_id != null)
+          <div class="comment-body">>>{{ $comment->to_id }} </div>
+          @endif
+          <div class="comment-body">{{ $comment->comment_text }} </div>
+            <a href="{{ route('replies.index', $comment->id) }}">コメント返信一覧</a>
             @if($user->id === $comment->user_id)
             <a href="{{ route('comments.deleteRequire', $comment->id) }}">コメント削除</a>
             @else

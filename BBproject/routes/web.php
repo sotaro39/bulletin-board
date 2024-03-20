@@ -44,6 +44,9 @@ Route::get('/comments/{comment}/deleteRequire', [CommentController::class, 'dele
 Route::post('/deleteCommentRequirements', [DeleteCommentRequirementController::class, 'store'])->middleware('auth')->name('deleteCommentRequirements.store');
 Route::post('/comments/{comment}', [CommentController::class, 'destroy'])->middleware('auth')->name('comments.destroy');
 
+//comment delete require
+Route::get('/deleteCommentRequirements', [DeleteCommentRequirementController::class, 'index'])->middleware('auth')->name('deleteCommentRequirements.index');
+Route::get('/deleteCommentRequirements/{deleteCommentRequirement}', [DeleteCommentRequirementController::class, 'destroy'])->middleware('auth')->name('deleteCommentRequirements.destroy');
 
 
 //logout

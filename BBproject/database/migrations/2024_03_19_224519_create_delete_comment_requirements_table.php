@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDeleteTopicRequirementsTable extends Migration
+class CreateDeleteCommentRequirementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateDeleteTopicRequirementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('delete_topic_requirements', function (Blueprint $table) {
+        Schema::create('delete_comment_requirements', function (Blueprint $table) {
             $table->id();
-            $table->integer('topic_id');
+            $table->integer('comment_id');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateDeleteTopicRequirementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('delete_topic_requirements');
+        Schema::dropIfExists('delete_comment_requirements');
     }
 }

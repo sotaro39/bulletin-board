@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TopicController;
 use App\Models\Comment;
 use App\Http\Controllers\DeleteTopicRequirementController; 
+use App\Http\Controllers\DeleteCommentRequirementController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +35,9 @@ Route::post('/deleteTopicRequirements', [DeleteTopicRequirementController::class
 //comment
 Route::get('/{topic}/comments/create', [CommentController::class, 'create'])->middleware('auth')->name('comments.create');
 Route::post('/comments', [CommentController::class, 'store'])->middleware('auth')->name('comments.store');
+Route::get('/comments/{comment}/deleteRequire', [CommentController::class, 'deleteRequire'])->middleware('auth')->name('comments.deleteRequire');
+Route::post('/deleteCommentRequirements', [DeleteCommentRequirementController::class, 'store'])->middleware('auth')->name('deleteCommentRequirements.store');
+Route::post('/comments/{comment}', [CommentController::class, 'destroy'])->middleware('auth')->name('comments.destroy');
 
 //logout
 Route::get('/', function(){

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Topic;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -77,6 +78,17 @@ class CommentController extends Controller
         //
     }
 
+    public function deleteRequire(Comment $comment)                
+    {
+        //$topicId = $topic->id;
+        //$topicName = $topic->topic_name;
+        $comment = $comment;
+        $user = Auth::user();
+        $value = $comment->topic_id;
+        return view('comments.deleteRequire',compact('comment', 'user', 'value'));  
+    }
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -95,8 +107,16 @@ class CommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
+
     public function destroy(Comment $comment)
     {
-        //
+        //dd($comment);
+        $id = $comment->id;
+        //dd($id);
+        $topicId = $comment->topic_id;
+        //dd($topicId);
+
+        $result = Comment::find($id)->delete();
+        return redirect(route('topics.show', $topicId));
     }
 }

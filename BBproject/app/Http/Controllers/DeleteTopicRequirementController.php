@@ -12,7 +12,6 @@ class DeleteTopicRequirementController extends Controller
     {
         $deleteTopicRequirement = new DeleteTopicRequireMent();
         $deleteTopicRequirement->topic_id = $request->topic_id;
-        $deleteTopicRequirement->topic_name = $request->topic_name;
         $deleteTopicRequirement->save();
         
         return redirect(route('topics.index'));

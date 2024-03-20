@@ -34,7 +34,6 @@
             </dl>
             <dl class="form-list">
                 <dt>トピック名 {{$topic->topic_name}}</dt>
-                <dd><input value="{{ $topic->topic_name }}" type="hidden" name="topic_name"></dd>
             </dl>
             <button type="submit">削除を依頼する</button>
             <a href="{{ route('topics.index') }}">キャンセル</a>

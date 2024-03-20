@@ -60,13 +60,16 @@ class TopicController extends Controller
      */
     public function show($id)
     {
+        //dd($id);
         $topic = Topic::find($id);
+        //dd($topic);
+        $user =  Auth::user();
         
         //$user = User::find($id);
 
         $comments = Comment::where('topic_id', '=', $id)->get();
         
-        return view('topic.show', compact('topic','comments'));
+        return view('topic.show', compact('topic','comments','user'));
     }
 
     /**

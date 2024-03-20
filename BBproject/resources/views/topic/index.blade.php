@@ -11,6 +11,9 @@
         <div class="site-title">掲示板</div>
     </header>
     <main class="container">
+        @if($user->roll === 0)
+        <p><a href="{{ route('deleteTopicRequirements.index') }}">管理者画面</a></p>
+        @endif
         <p><a href="{{ route('logout') }}">logout</a></p>
         <p><a href="{{ route('topics.create') }}">トピック作成</a></p>
         @foreach ($topics as $topic)

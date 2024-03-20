@@ -15,6 +15,11 @@
         <article class="comment-item">
             <div class="comment-body">{{ $comment->comment_id }}   {{ $comment->created_at }} </div>
             <div class="comment-body">{{ $comment->comment_text }} </div>
+            @if($user->id === $comment->user_id)
+            <a href="{{ route('comments.deleteRequire', $comment->id) }}">コメント削除</a>
+            @else
+            <a href="{{ route('comments.deleteRequire', $comment->id) }}">コメント削除依頼</a>
+            @endif
         </article>
         @endforeach
         

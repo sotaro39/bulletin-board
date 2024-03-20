@@ -1,23 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<h1>ログイン</h1>
+@extends('layouts.auth')
+@section('auth-content')
 
-<form action="{{ route('login') }}" method="post">
-    @csrf 
-    <dl class="form-list">
-        <dt>メールアドレス</dt>
-        <dd><input type="email" name="email" value="{{ old('email') }}"></dd>
-        <dt>パスワード</dt>
-        <dd><input type="password" name="password"></dd>
-    </dl>
-    <button type="submit">ログイン</button>
-    <a href="/">キャンセル</a>
-</form>
-</body>
-</html>
+    <form action="{{ route('login') }}" method="post">
+        @csrf 
+        <h1 class="text-center mb-4">ログイン</h1>
+        <div class="form-floating mb-3">
+             <input type="email" name="email" value="{{ old('email') }}" class="form-control custom-width" id="floatingInput" placeholder="name@example.com">
+             <label for="floatingInput">メールアドレス</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" name="password" class="form-control custom-width" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">パスワード</label>
+        </div>
+        <button class="btn btn-primary" type="submit">ログイン</button>
+        <a href="/" class="btn btn-secondary">キャンセル</a>
+    </form>
+    
+@endsection()

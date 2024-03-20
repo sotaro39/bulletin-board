@@ -34,7 +34,6 @@
                 <dd><input value="{{ $comment->id }}" type="hidden" name="comment_id"></dd>
             </dl>
             <button type="submit">削除を依頼する</button>
-            <a href="{{ route('topics.show', $value) }}">キャンセル</a>
         </form>
         @endif
     </main>

@@ -77,7 +77,7 @@ class DeleteTopicRequirementController extends Controller
     public function destroy($id)
     {
         $result = Topic::find($id)->delete();
-        $$result = DeleteTopicRequirement::where('topic_id', '=', $id)->delete();
+        $result = DeleteTopicRequirement::where('topic_id', '=', $id)->delete();
         return redirect(route('deleteTopicRequirements.index'));
     }
 

@@ -12,6 +12,8 @@
         <div class="site-title">掲示板</div>
     </header>
     <main class="container">
+        <a href="{{ route('topics.index') }}">ホーム画面</a>
+        <a href="{{ route('deleteCommentRequirements.index') }}">コメント削除依頼一覧</a>
         @foreach ($sortedDeleteTopics as $sortedDeleteTopic)
         <article class="article-item">
             <div class="article-title">

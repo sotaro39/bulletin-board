@@ -9,7 +9,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col">
-                        <div class="card-title">
+                        <div class="card-title" style="font-size: 1.2rem;">
                             <a href="{{ route('topics.show', $topic->id) }}">{{ $topic->id}}  : {{$topic->topic_name}}</a>
                         </div>
                     </div>

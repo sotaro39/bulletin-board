@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRepliesTable extends Migration
+class AddRollToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateRepliesTable extends Migration
      */
     public function up()
     {
-        Schema::create('replies', function (Blueprint $table) {
-            $table->id();
-            $table->integer('to_id');
-            $table->integer('from_id');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->integer('roll')->nullable();
         });
     }
 
@@ -28,6 +25,8 @@ class CreateRepliesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('replies');
+        Schema::table('users', function (Blueprint $table) {
+            //
+        });
     }
 }

@@ -4,6 +4,10 @@
 <form action="{{ route('comments.store') }}" method="post" class="my-4">
 @csrf 
 <div class="form-group">
+    <label for="to_id">返信先</label>
+    <input type="integer" name="to_id" class="form-control" id="to_id" placeholder="返信先を入力してください">
+</div>
+<div class="form-group">
     <label for="comment">コメント</label>
     <input type="text" name="comment" class="form-control" id="comment" placeholder="コメントを入力してください">
 </div>

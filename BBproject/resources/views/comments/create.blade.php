@@ -1,25 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="/main.css">
-</head>
-<body>
-    <header>
-        <div class="site-title">掲示板</div>
-    </header>
-    <main class="container">
-        <form action="{{ route('comments.store') }}" method="post">
-            @csrf
-            <p><label>返信先:<input type="integer" name="to_id"></label></p>
-            <p><label>コメント内容:<input type="textarea" name="comment"></label></p>
-            <input value="{{ $value }}" type="hidden" name="topic_id">
-            <button type="submit">投稿する</button>
-            <a href="{{ route('topics.show', $value) }}">キャンセル</a>
-        </form>
-    </main>
-</body>
-</html>
+@extends('layouts.app')
+@section('content')
+@include('commons.errors')
+<form action="{{ route('comments.store') }}" method="post" class="my-4">
+@csrf 
+<div class="form-group">
+    <label for="to_id">返信先</label>
+    <input type="integer" name="to_id" class="form-control" id="to_id" placeholder="返信先を入力してください">
+</div>
+<div class="form-group">
+    <label for="comment">コメント</label>
+    <input type="text" name="comment" class="form-control" id="comment" placeholder="コメントを入力してください">
+</div>
+<input value="{{ $value }}" type="hidden" name="topic_id">
+<div class="form-group" style="margin-top: 30px;">
+    <button type="submit" class="btn btn-primary mr-2" style="margin-right: 30px;">投稿する</button>
+    <a href="{{ route('topics.show', $value) }}" class="btn btn-secondary">キャンセル</a>
+</div>
+</form>
+@endsection()

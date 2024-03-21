@@ -1,36 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/main.css">
-</head>
-<body>
-    <header>
-        <div class="site-title">掲示板</div>
-    </header>
-    <main class="container">
-        @if($user->roll === 0)
-        <p><a href="{{ route('deleteTopicRequirements.index') }}">管理者画面</a></p>
-        @endif
-        <p><a href="{{ route('logout') }}">logout</a></p>
-        <p><a href="{{ route('topics.create') }}">トピック作成</a></p>
+@extends('layouts.app')
+@section('content')
+    <div class="d-flex justify-content-between mb-3">
+        <a href="{{ route('topics.create') }}" class="btn btn-success">トピック作成</a>
+        <a href="{{ route('logout') }}" class="btn btn-secondary">logout</a>
+    </div>
         @foreach ($topics as $topic)
-        <article class="article-item">
-            <div class="article-title">
-                <a href="{{ route('topics.show', $topic->id) }}">{{ $topic->id}}   {{$topic->topic_name}}</a>
+        <article class="card my-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <div class="card-title" style="font-size: 1.2rem;">
+                            <a href="{{ route('topics.show', $topic->id) }}">{{ $topic->id}}  : {{$topic->topic_name}}</a>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <div class="card-text">
+                            @if($user->id === $topic->user_id)
+                            <a href="{{ route('topics.deleteRequire', $topic->id) }}" class="btn btn-danger">トピック削除</a>
+                            @else
+                            <a href="{{ route('topics.deleteRequire', $topic->id) }}" class="btn btn-danger">トピック削除依頼</a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
             </div>
-                @if($user->id === $topic->user_id)
-                <a href="{{ route('topics.deleteRequire', $topic->id) }}">トピック削除</a>
-                @else
-                <a href="{{ route('topics.deleteRequire', $topic->id) }}">トピック削除依頼</a>
-                @endif
         </article>
         @endforeach
-    </main>
-    <footer>
-        <div class="site-title">掲示板</div>
-    </footer>
-</body>
-</html>
+@endsection()

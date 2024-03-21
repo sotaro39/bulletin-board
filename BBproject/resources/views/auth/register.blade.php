@@ -1,26 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<h1>会員登録</h1>
+@extends('layouts.auth')
+@section('auth-content')
+
 <form action="{{ route('register') }}" method="post">
-    @csrf 
-    <dl class="form-list">
-        <dt>名前</dt>
-        <dd><input type="text" name="name" value="{{ old('name') }}"></dd>
-        <dt>メールアドレス</dt>
-        <dd><input type="email" name="email" value="{{ old('email') }}"></dd>
-        <dt>パスワード</dt>
-        <dd><input type="password" name="password"></dd>
-        <dt>パスワード（確認用）</dt>
-        <dd><input type="password" name="password_confirmation" placeholder="もう一度入力"></dd>
-    </dl>
-<button type="submit">登録する</button>
-<a href="/">キャンセル</a>
+        @csrf 
+        <h1 class="text-center mb-4">会員登録</h1>
+        <div class="form-floating mb-3">
+             <input type="text" name="name" value="{{ old('name') }}" class="form-control custom-width" id="floatingInput" placeholder="text">
+             <label for="floatingInput">名前</label>
+        </div>
+        <div class="form-floating mb-3">
+             <input type="email" name="email" value="{{ old('email') }}" class="form-control custom-width" id="floatingInput" placeholder="name@example.com">
+             <label for="floatingInput">メールアドレス</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" name="password" class="form-control custom-width" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">パスワード</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" name="password_confirmation" class="form-control custom-width" id="floatingPassword" placeholder="もう一度入力">
+            <label for="floatingPassword">確認用パスワード</label>
+        </div>
+        <button class="btn btn-primary" type="submit">登録する</button>
+        <a href="/" class="btn btn-secondary">キャンセル</a>
 </form>
-</body>
-</html>
+
+@endsection()

@@ -1,3 +1,5 @@
+/* layouts */
+
 body {
     margin: 0;
 }
@@ -14,18 +16,8 @@ header {
 }
 
 .container {
+    margin-top: 30px;
     padding: 0 20px;
-}
-
-.article-item {
-    padding: 20px 0;
-    border-bottom: 1px solid #ddd;
-}
-
-.article-title {
-    margin-bottom: 10px;
-    font-size: 1.2rem;
-    font-weight: bold;
 }
 
 footer {
@@ -33,4 +25,25 @@ footer {
     text-align: center;
     font-size: .9rem;
     color: #777;
+}
+
+/* errors */
+ul.alert {
+    padding: 15px 15px 15px 40px;
+    border-radius: 4px;
+    background: #f8d6d9;
+    color: #721c24;
+}
+
+
+
+/* topic/index */
+
+.card-body {
+    padding: 20px 0;
+}
+
+.card-title {
+    margin-bottom: 10px;
+    font-weight: bold;
 }

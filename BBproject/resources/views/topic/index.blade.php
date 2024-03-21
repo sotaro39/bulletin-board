@@ -2,7 +2,11 @@
 @section('content')
     <div class="d-flex justify-content-between mb-3">
         <a href="{{ route('topics.create') }}" class="btn btn-success">トピック作成</a>
+        @if ($user->roll === 0)
+        <a href="{{ route('deleteTopicRequirements.index') }}" class="btn btn-secondary" >管理者画面</a>
+        @endif
         <a href="{{ route('logout') }}" class="btn btn-secondary">logout</a>
+
     </div>
         @foreach ($topics as $topic)
         <article class="card my-3">
